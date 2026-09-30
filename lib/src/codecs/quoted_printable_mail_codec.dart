@@ -206,7 +206,7 @@ class QuotedPrintableMailCodec extends MailCodec {
           break;
         }
         final hexText = cleaned.substring(i + 1, i + 3);
-        var charCode = int.tryParse(hexText, radix: 16);
+        final charCode = int.tryParse(hexText, radix: 16);
         if (charCode == null) {
           print(
             'unable to decode quotedPrintable [$cleaned]: '
@@ -220,11 +220,20 @@ class QuotedPrintableMailCodec extends MailCodec {
             // below still reads cleaned[i+4..i+5], so stop if the trailing
             // '=' has fewer than two hex chars after it and let the outer
             // loop pick it up via the truncated-tail branch above.
-            if (i + 6 > cleaned.length) break;
+            if (i + 6 > cleaned.length) {
+              break;
+            }
+            // A non-hex '=XY' ends the byte sequence; the outer loop then
+            // handles it like any other invalid escape instead of throwing.
+            final nextCharCode = int.tryParse(
+              cleaned.substring(i + 4, i + 6),
+              radix: 16,
+            );
+            if (nextCharCode == null) {
+              break;
+            }
             i += 3;
-            final hexText = cleaned.substring(i + 1, i + 3);
-            charCode = int.parse(hexText, radix: 16);
-            charCodes.add(charCode);
+            charCodes.add(nextCharCode);
           }
 
           try {

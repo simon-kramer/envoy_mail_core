@@ -105,6 +105,12 @@ void main() {
           'hiö=A',
         );
       });
+      test('valid multi-byte escape followed by non-hex "=ZZ"', () {
+        expect(
+          MailCodec.quotedPrintable.decodeText('hi=C3=B6=ZZ', convert.utf8),
+          'hiöZZ',
+        );
+      });
     });
   });
 
