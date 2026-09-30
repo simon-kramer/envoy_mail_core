@@ -373,7 +373,7 @@ Date and time values occur in several header fields.  This section
   }
 
   /// Decodes the given MIME [dateText] to the local DateTime
-  static DateTime? decodeDate(final String? dateText) {
+  static DateTime? decodeDate(String? dateText) {
     /*
 Date and time values occur in several header fields.  This section
    specifies the syntax for a full date and time specification.  Though

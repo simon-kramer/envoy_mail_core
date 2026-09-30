@@ -277,10 +277,7 @@ class BinaryMimeData extends MimeData {
     _bodySize = _bodyData.length;
   }
 
-  List<BinaryMimeData> _splitAndParse(
-    final String boundaryText,
-    final Uint8List bodyData,
-  ) {
+  List<BinaryMimeData> _splitAndParse(String boundaryText, Uint8List bodyData) {
     final boundary = '--$boundaryText\r\n'.codeUnits;
     final result = <BinaryMimeData>[];
     // end is expected to be \r\n for all but the last one, where -- is expected, possibly followed by \r\n

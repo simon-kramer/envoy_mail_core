@@ -77,8 +77,7 @@ void main() {
   });
 
   test('PopClient.uidList()', () async {
-    _mockServer.nextResponse =
-        '+OK unique-id listing follows\r\n\1 XSLKDSL\r\n2 QhdPYR:00WBw1Ph7x7\r\n.\r\n';
+    _mockServer.nextResponse = '+OK unique-id listing follows\r\n\1 XSLKDSL\r\n2 QhdPYR:00WBw1Ph7x7\r\n.\r\n';
     final response = await client.uidList();
     expect(response.length, 2);
     expect(response.first.id, 1);

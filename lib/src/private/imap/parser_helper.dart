@@ -112,7 +112,7 @@ class ParserHelper {
   /// Helper method to read the next word within a string
   static Word? readNextWord(
     String details,
-    final int startIndex, [
+    int startIndex, [
     String separator = ' ',
   ]) {
     var endIndex = details.indexOf(separator, startIndex);
@@ -129,7 +129,7 @@ class ParserHelper {
   }
 
   /// Parses the headers from the given [headerText]
-  static HeaderParseResult parseHeader(final String headerText) {
+  static HeaderParseResult parseHeader(String headerText) {
     final headerLines = headerText.split('\r\n');
 
     return parseHeaderLines(headerLines);

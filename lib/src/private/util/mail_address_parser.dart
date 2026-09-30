@@ -89,7 +89,7 @@ class MailAddressParser {
     return addresses;
   }
 
-  static List<String> _splitAddressParts(final String text) {
+  static List<String> _splitAddressParts(String text) {
     if (text.isEmpty) {
       return [];
     }

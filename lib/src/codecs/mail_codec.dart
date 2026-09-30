@@ -190,7 +190,7 @@ abstract class MailCodec {
   });
 
   /// Decodes the given header [input] value.
-  static String? decodeHeader(final String? input) {
+  static String? decodeHeader(String? input) {
     if (input == null || input.isEmpty) {
       return input;
     }
@@ -243,7 +243,7 @@ abstract class MailCodec {
     return buffer.toString();
   }
 
-  static void _decodeHeaderImpl(final String input, StringBuffer buffer) {
+  static void _decodeHeaderImpl(String input, StringBuffer buffer) {
     RegExpMatch? match;
     var reminder = input;
     while ((match = _headerEncodingExpression.firstMatch(reminder)) != null) {
@@ -304,10 +304,7 @@ abstract class MailCodec {
   }
 
   /// Decodes the given binary [text]
-  static Uint8List decodeBinary(
-    final String text,
-    final String? transferEncoding,
-  ) {
+  static Uint8List decodeBinary(String text, String? transferEncoding) {
     final tEncoding = transferEncoding ?? contentTransferEncodingNone;
     final decoder = _binaryDecodersByName[tEncoding.toLowerCase()];
     if (decoder == null) {
@@ -321,9 +318,9 @@ abstract class MailCodec {
 
   /// Decodes the given [data]
   static String decodeAsText(
-    final Uint8List data,
-    final String? transferEncoding,
-    final String? charset,
+    Uint8List data,
+    String? transferEncoding,
+    String? charset,
   ) {
     if (transferEncoding == null && charset == null) {
       // this could be a) UTF-8 or b) UTF-16 most likely:
@@ -366,9 +363,9 @@ abstract class MailCodec {
 
   /// Decodes the given [text]
   static String decodeAnyText(
-    final String text,
-    final String? transferEncoding,
-    final String? charset,
+    String text,
+    String? transferEncoding,
+    String? charset,
   ) {
     final transferEnc = transferEncoding ?? contentTransferEncodingNone;
     final decoder = _textDecodersByName[transferEnc.toLowerCase()];
@@ -396,7 +393,7 @@ abstract class MailCodec {
       Uint8List.fromList(part.codeUnits);
 
   /// Decodes the data from the given 8bit text [part]
-  static Uint8List decode8BitTextData(final String part) =>
+  static Uint8List decode8BitTextData(String part) =>
       Uint8List.fromList(part.replaceAll('\r\n', '').codeUnits);
 
   /// Is a noop

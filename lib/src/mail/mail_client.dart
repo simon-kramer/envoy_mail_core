@@ -2174,7 +2174,7 @@ class _IncomingImapClient extends _IncomingMailClient {
   Future<Mailbox> selectMailbox(
     Mailbox mailbox, {
     bool enableCondStore = false,
-    final QResyncParameters? qresync,
+    QResyncParameters? qresync,
   }) async {
     await _pauseIdle();
     try {
@@ -2241,7 +2241,7 @@ class _IncomingImapClient extends _IncomingMailClient {
     MessageSequence sequence, {
     FetchPreference fetchPreference = FetchPreference.fullWhenWithinSize,
     bool markAsSeen = false,
-    final Duration? responseTimeout,
+    Duration? responseTimeout,
   }) async {
     final downloadSizeLimit = this.downloadSizeLimit;
     var timeout = responseTimeout;
@@ -2537,7 +2537,7 @@ class _IncomingImapClient extends _IncomingMailClient {
 
   @override
   Future<MimeMessage> fetchMessageContents(
-    final MimeMessage message, {
+    MimeMessage message, {
     int? maxSize,
     bool markAsSeen = false,
     List<MediaToptype>? includedInlineTypes,

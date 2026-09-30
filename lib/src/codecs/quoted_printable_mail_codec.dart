@@ -19,7 +19,7 @@ class QuotedPrintableMailCodec extends MailCodec {
   /// Set [wrap] to false in case you do not want to wrap lines.
   @override
   String encodeText(
-    final String text, {
+    String text, {
     Codec codec = MailCodec.encodingUtf8,
     bool wrap = true,
   }) {
@@ -71,7 +71,7 @@ class QuotedPrintableMailCodec extends MailCodec {
   /// at the beginning of the text and not in the middle.
   @override
   String encodeHeader(
-    final String text, {
+    String text, {
     int nameLength = 0,
     Codec codec = utf8,
     bool fromStart = false,
@@ -186,11 +186,7 @@ class QuotedPrintableMailCodec extends MailCodec {
   /// Set [isHeader] to true to decode header text using the Q-Encoding scheme,
   /// compare https://tools.ietf.org/html/rfc2047#section-4.2
   @override
-  String decodeText(
-    final String part,
-    final Encoding codec, {
-    bool isHeader = false,
-  }) {
+  String decodeText(String part, Encoding codec, {bool isHeader = false}) {
     final buffer = StringBuffer();
     // remove all soft-breaks:
     final cleaned = part.replaceAll('=\r\n', '');

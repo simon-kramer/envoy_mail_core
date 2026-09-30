@@ -120,7 +120,7 @@ class Base64MailCodec extends MailCodec {
   }
 
   @override
-  Uint8List decodeData(final String part) {
+  Uint8List decodeData(String part) {
     var cleaned = part.replaceAll('\r\n', '');
     var numberOfRequiredPadding = cleaned.length % 4 == 0
         ? 0

@@ -931,9 +931,10 @@ class MessageBuilder extends PartBuilder {
       final value = queryParameters[key];
       switch (key.toLowerCase()) {
         case 'subject':
-          builder.subject = value;
           // Defaults to QP-encoding
-          builder.subjectEncoding = HeaderEncoding.Q;
+          builder
+            ..subject = value
+            ..subjectEncoding = HeaderEncoding.Q;
           break;
         case 'to':
           if (value != null) {
@@ -1501,7 +1502,7 @@ class MessageBuilder extends PartBuilder {
   }
 
   /// Quotes the given plain text [header] and [text].
-  static String quotePlainText(final String header, final String? text) {
+  static String quotePlainText(String header, String? text) {
     if (text == null) {
       return '>\r\n';
     }

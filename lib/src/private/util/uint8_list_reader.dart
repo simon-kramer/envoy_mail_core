@@ -98,7 +98,7 @@ class OptimizedBytesBuilder {
   final List<Uint8List> _chunks = [];
 
   /// Adds the given [bytes] data
-  void add(final Uint8List bytes) {
+  void add(Uint8List bytes) {
     _chunks.add(bytes);
     _length += bytes.length;
   }
@@ -132,7 +132,7 @@ class OptimizedBytesBuilder {
   }
 
   /// Takes the first [len] bytes
-  Uint8List takeFirst(final int len) {
+  Uint8List takeFirst(int len) {
     if (len <= 0) {
       return _emptyList;
     }
@@ -205,7 +205,7 @@ class OptimizedBytesBuilder {
   }
 
   /// Gets the byte at the given [index]
-  int getByteAt(final int index) {
+  int getByteAt(int index) {
     var i = index;
     for (final chunk in _chunks) {
       if (i < chunk.length) {

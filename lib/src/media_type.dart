@@ -353,7 +353,7 @@ class MediaType {
   /// If it encounters an unknown extension, the `application/octet-stream`
   /// media type is returned.
   /// Alternatively use [MediaType.guessFromFileName] for the same results.
-  factory MediaType.guessFromFileExtension(final String ext) {
+  factory MediaType.guessFromFileExtension(String ext) {
     switch (ext.toLowerCase()) {
       case 'txt':
         return MediaType.textPlain;
