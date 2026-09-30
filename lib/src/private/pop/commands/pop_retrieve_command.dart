@@ -1,4 +1,4 @@
-import '../../../../enough_mail.dart';
+import '../../../../envoy_mail_core.dart';
 import '../parsers/all_parsers.dart';
 import '../pop_command.dart';
 

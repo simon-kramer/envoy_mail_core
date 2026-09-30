@@ -1,8 +1,8 @@
-import 'package:enough_mail/src/imap/id.dart';
-import 'package:enough_mail/src/imap/response.dart';
-import 'package:enough_mail/src/private/imap/id_parser.dart';
-import 'package:enough_mail/src/private/imap/imap_response.dart';
-import 'package:enough_mail/src/private/imap/imap_response_line.dart';
+import 'package:envoy_mail_core/src/imap/id.dart';
+import 'package:envoy_mail_core/src/imap/response.dart';
+import 'package:envoy_mail_core/src/private/imap/id_parser.dart';
+import 'package:envoy_mail_core/src/private/imap/imap_response.dart';
+import 'package:envoy_mail_core/src/private/imap/imap_response_line.dart';
 import 'package:test/test.dart';
 
 // cSpell:disable

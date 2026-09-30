@@ -1,26 +1,50 @@
-# enough_mail
+# envoy_mail_core
 
-**Maintenance fork of [enough_mail](https://pub.dev/packages/enough_mail)**
+IMAP, POP3 and SMTP clients for Dart with MIME parsing, message building and
+mail server discovery. This is the mail protocol library of Envoy Mail.
 
-IMAP, POP3 and SMTP clients for Dart and Flutter email developers.
+`envoy_mail_core` is a maintained fork of
+[enough_mail](https://github.com/Enough-Software/enough_mail) by Enough Software.
+The original package has not been released on pub.dev since 2.1.7
+(August 2025), although fixes keep landing on its `main` branch. This fork
+ships those fixes, keeps the dependencies current and adds its own.
 
-Available under the commercial friendly 
-[MPL Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/).
+Licensed under the [Mozilla Public License 2.0](LICENSE), like the original.
 
-## Key Fixes in this Fork
-* **Header Folding Fix**: Prevents invalid folding after `<` in headers, resolving common SpamAssassin errors like "Leading whitespace after '<'" and "unbalanced angle brackets".
+## Provenance
+
+* Based on `Enough-Software/enough_mail` `main` at
+  [`750539f`](https://github.com/Enough-Software/enough_mail/commit/750539f59a0ca2e3ac1e2b4486def291c3867f1a)
+  (2026-09-27, version 2.2.3 plus unreleased fixes).
+* Includes upstream pull request
+  [#283](https://github.com/Enough-Software/enough_mail/pull/283)
+  (quoted-printable decoding of truncated escapes).
+* See [CHANGELOG.md](CHANGELOG.md) for everything this fork changes on top.
 
 ## Installation
-Add this dependency your pubspec.yaml file:
+
+The package is not published on pub.dev. Add it as a git dependency and pin
+it to a release tag or commit:
 
 ```yaml
 dependencies:
-  enough_mail: ^2.2.0
+  envoy_mail_core:
+    git:
+      url: https://github.com/simon-kramer/envoy_mail_core.git
+      ref: v3.0.0
 ```
 
-## API Documentation
-Check out the full API documentation at https://pub.dev/documentation/enough_mail/latest/
+## Updating from upstream
 
+This repository keeps the full upstream history, so upstream commits can be
+cherry-picked directly:
+
+1. `git remote add upstream https://github.com/Enough-Software/enough_mail.git`
+   (once), then `git fetch upstream` and review
+   `git log 750539f..upstream/main`.
+2. Cherry-pick the relevant commits, then run `dart format .`,
+   `dart analyze` and `dart test`.
+3. Update the provenance commit and the changelog.
 
 ## High Level API Usage
 
@@ -29,7 +53,7 @@ A simple usage example for using the high level API:
 
 ```dart
 import 'dart:io';
-import 'package:enough_mail/enough_mail.dart';
+import 'package:envoy_mail_core/envoy_mail_core.dart';
 
 String userName = 'user.name';
 String password = 'password';
@@ -117,7 +141,7 @@ A simple usage example for using the low level API:
 
 ```dart
 import 'dart:io';
-import 'package:enough_mail/enough_mail.dart';
+import 'package:envoy_mail_core/envoy_mail_core.dart';
 
 String userName = 'user.name';
 String password = 'password';
@@ -254,38 +278,17 @@ void printMessage(MimeMessage message) {
 }
 ```
 
-## Related Projects
-Check out these related projects:
-* [enough_mail_html](https://github.com/Enough-Software/enough_mail_html) generates HTML out of a `MimeMessage`.
-* [enough_mail_flutter](https://github.com/Enough-Software/enough_mail_flutter) provides some common Flutter widgets for any mail app.
-* [enough_mail_icalendar](https://github.com/Enough-Software/enough_mail_icalendar) for handling calendar invites in emails.
-* [enough_mail_app](https://github.com/Enough-Software/enough_mail_app) aims to become a full mail app.
-* [enough_convert](https://github.com/Enough-Software/enough_convert) provides the encodings missing from `dart:convert`.  
+## Bugs and contributions
 
-## Miss a feature or found a bug?
+Report bugs and propose changes in the
+[issue tracker](https://github.com/simon-kramer/envoy_mail_core/issues).
+Fixes that also apply to the original package are worth proposing upstream at
+[Enough-Software/enough_mail](https://github.com/Enough-Software/enough_mail).
 
-Please file feature requests and bugs at the [issue tracker](https://github.com/Enough-Software/enough_mail/issues).
+## Credits
 
-## Contribute
-
-Want to contribute? Please check out [contribute](https://github.com/Enough-Software/enough_mail/contribute).
-This is an open-source community project. Anyone, even beginners, can contribute.
-
-This is how you contribute:
-
-* Fork the [enough_mail](https://github.com/enough-software/enough_mail/) project by pressing the fork button.
-* Clone your fork to your computer: `git clone github.com/$your_username/enough_mail`
-* Do your changes. When you are done, commit changes with `git add -A` and `git commit`.
-* Push changes to your personal repository: `git push origin`
-* Go to [enough_mail](https://github.com/enough-software/enough_mail/)  and create a pull request.
-
-Thank you in advance!
-
-## Thanks to all Contributors!!
-<a href="https://github.com/Enough-Software/enough_mail/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Enough-Software/enough_mail" />
-</a>
-
+Written by Robert Virkus and the
+[enough_mail contributors](https://github.com/Enough-Software/enough_mail/graphs/contributors).
 
 ## Features
 ### Base standards
@@ -339,18 +342,12 @@ Transfer encodings:
 * [Quoted-Printable (Q)](https://tools.ietf.org/html/rfc2045#section-6.7)
 * [Base-64 (base64)](https://tools.ietf.org/html/rfc2045#section-6.8)
 
-### To do
-* Compare [issues](https://github.com/Enough-Software/enough_mail/issues)
-
-### Develop and Contribute
-* To start check out the package and then run `dart run test` to run all tests.
-* Public facing library classes are in *lib*, *lib/imap* and *lib/smtp*. 
-* Private classes are in *lib/src*.
+### Develop
+* Run `dart test` to run all tests.
+* Public library entry points are in *lib*, implementation classes are in *lib/src*.
 * Test cases are in *test*.
-* Please file a pull request for each improvement/fix that you are create - your contributions are welcome.
-* Check out https://github.com/enough-Software/enough_mail/contribute for good first issues.
-* When changing model files, re-run the code generation by calling  `dart run build_runner build --delete-conflicting-outputs`.
+* When changing model files, re-run the code generation with `dart run build_runner build`.
 
 
 ## License
-`enough_mail` is licensed under the commercial friendly [Mozilla Public License 2.0](LICENSE).
+`envoy_mail_core` is licensed under the [Mozilla Public License 2.0](LICENSE), like the original `enough_mail`.

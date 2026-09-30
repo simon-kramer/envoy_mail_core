@@ -1,5 +1,5 @@
-import 'package:enough_mail/src/exception.dart';
-import 'package:enough_mail/src/imap/message_sequence.dart';
+import 'package:envoy_mail_core/src/exception.dart';
+import 'package:envoy_mail_core/src/imap/message_sequence.dart';
 import 'package:test/test.dart';
 
 void main() {

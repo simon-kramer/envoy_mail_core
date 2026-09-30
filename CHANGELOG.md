@@ -1,3 +1,36 @@
+# 3.0.0
+First release of `envoy_mail_core`, the maintained fork of `enough_mail`.
+
+* Breaking: the package is renamed from `enough_mail` to `envoy_mail_core`.
+  Import `package:envoy_mail_core/envoy_mail_core.dart` instead of
+  `package:enough_mail/enough_mail.dart`; the sub libraries (`codecs.dart`,
+  `imap.dart`, `smtp.dart`, ...) keep their names.
+* Based on upstream `main` at `750539f`. Compared to the last pub.dev release
+  2.1.7 this brings all 2.2.x changes plus the unreleased upstream work:
+  NAMESPACE support (RFC 2342), stripping folded `Bcc` headers from SMTP
+  `DATA`, bare LF normalisation in fetched `BODY[]` literals, `APPEND` with
+  an explicit `INTERNALDATE` and from raw bytes, mailbox names containing
+  parentheses, `HIGHESTMODSEQ` from `STATUS`, `STATUS` with unquoted mailbox
+  names, failing pending commands when the connection is lost,
+  quoted-printable attachments decoded to their bytes, bare SMTP reply codes
+  and a quadratic slowdown in `MailCodec.wrapText()`.
+* Breaking (from upstream 2.2.x): `eventBus` is replaced by `eventStream` on
+  `MailClient`, `ImapClient`, `PopClient` and `SmtpClient`.
+* Fix: quoted-printable decoding no longer throws a `RangeError` on a
+  truncated `=` or `=X` escape (upstream pull request #283).
+* Fix: quoted-printable decoding no longer throws a `FormatException` when a
+  valid escape is followed by a non-hex `=XY`.
+* Fix: the BDAT send path (`sendChunkedMessage`, `sendChunkedMessageData`)
+  strips a folded `Bcc` header as well. Upstream only fixed the `DATA` path,
+  so To/Cc recipients of a chunked send could still see Bcc addresses.
+* Chore: require Dart 3.13, drop `final` from parameters (no longer allowed
+  with language version 3.13), remove deprecated lint rules and
+  `prefer_initializing_formals`, type the `incomingPort` and `outgoingPort`
+  parameters of `MailAccount.fromManualSettingsWithAuth`.
+* Chore: raise all dependencies to their latest stable versions, including
+  `xml` 7; remove the unused dev dependencies `dart_code_linter`,
+  `flutter_lints` and `lints`.
+
 # 2.2.4
 * Feat: Support the IMAP `NAMESPACE` extension ([RFC 2342](https://datatracker.ietf.org/doc/html/rfc2342)): `ImapClient.namespace()` returns the personal, other users' and shared namespaces with their prefixes, hierarchy delimiters and response extensions; `ImapServerInfo.supportsNamespace` tells whether the server advertises it.
 

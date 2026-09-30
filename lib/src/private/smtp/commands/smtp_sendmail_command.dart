@@ -1,4 +1,4 @@
-import '../../../../enough_mail.dart';
+import '../../../../envoy_mail_core.dart';
 import '../smtp_command.dart';
 
 enum _SmtpSendCommandSequence { mailFrom, rcptTo, data, done }

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:enough_mail/enough_mail.dart';
+import 'package:envoy_mail_core/envoy_mail_core.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -1,4 +1,4 @@
-import '../../enough_mail.dart';
+import '../../envoy_mail_core.dart';
 
 /// Status for command responses.
 enum ResponseStatus {

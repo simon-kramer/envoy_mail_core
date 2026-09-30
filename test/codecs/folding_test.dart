@@ -1,7 +1,7 @@
-import 'package:enough_mail/src/codecs/mail_codec.dart';
-import 'package:enough_mail/src/mail_address.dart';
-import 'package:enough_mail/src/message_builder.dart';
-import 'package:enough_mail/src/mime_message.dart';
+import 'package:envoy_mail_core/src/codecs/mail_codec.dart';
+import 'package:envoy_mail_core/src/mail_address.dart';
+import 'package:envoy_mail_core/src/message_builder.dart';
+import 'package:envoy_mail_core/src/mime_message.dart';
 import 'package:test/test.dart';
 
 // cSpell:disable

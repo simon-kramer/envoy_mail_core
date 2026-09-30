@@ -3,11 +3,11 @@ import 'dart:typed_data';
 
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:enough_convert/enough_convert.dart';
-import 'package:enough_mail/src/codecs/date_codec.dart';
-import 'package:enough_mail/src/codecs/mail_codec.dart';
-import 'package:enough_mail/src/mail_address.dart';
-import 'package:enough_mail/src/media_type.dart';
-import 'package:enough_mail/src/mime_message.dart';
+import 'package:envoy_mail_core/src/codecs/date_codec.dart';
+import 'package:envoy_mail_core/src/codecs/mail_codec.dart';
+import 'package:envoy_mail_core/src/mail_address.dart';
+import 'package:envoy_mail_core/src/media_type.dart';
+import 'package:envoy_mail_core/src/mime_message.dart';
 import 'package:test/test.dart';
 
 // cSpell:disable

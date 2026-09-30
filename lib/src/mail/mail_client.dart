@@ -5,7 +5,7 @@ import 'dart:math';
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:synchronized/synchronized.dart';
 
-import '../../enough_mail.dart';
+import '../../envoy_mail_core.dart';
 import '../private/util/client_base.dart';
 import '../private/util/non_nullable.dart';
 

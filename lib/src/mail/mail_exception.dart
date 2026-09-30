@@ -1,4 +1,4 @@
-import '../../enough_mail.dart';
+import '../../envoy_mail_core.dart';
 
 /// Provides details about high level unexpected events
 class MailException implements Exception {

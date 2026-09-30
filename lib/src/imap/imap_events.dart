@@ -1,4 +1,4 @@
-import '../../enough_mail.dart';
+import '../../envoy_mail_core.dart';
 
 /// Classification of IMAP events
 ///

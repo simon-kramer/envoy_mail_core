@@ -1,4 +1,4 @@
-import 'package:enough_mail/src/codecs/date_codec.dart';
+import 'package:envoy_mail_core/src/codecs/date_codec.dart';
 import 'package:test/test.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;

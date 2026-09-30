@@ -1,4 +1,4 @@
-import 'package:enough_mail/enough_mail.dart';
+import 'package:envoy_mail_core/envoy_mail_core.dart';
 
 /// Simple example demonstrating basic email discovery and IMAP usage.
 void main() async {

@@ -1,10 +1,10 @@
-import 'package:enough_mail/src/imap/imap_client.dart';
-import 'package:enough_mail/src/imap/mailbox.dart';
-import 'package:enough_mail/src/imap/response.dart';
-import 'package:enough_mail/src/private/imap/imap_response.dart';
-import 'package:enough_mail/src/private/imap/imap_response_line.dart';
-import 'package:enough_mail/src/private/imap/list_parser.dart';
-import 'package:enough_mail/src/private/util/client_base.dart';
+import 'package:envoy_mail_core/src/imap/imap_client.dart';
+import 'package:envoy_mail_core/src/imap/mailbox.dart';
+import 'package:envoy_mail_core/src/imap/response.dart';
+import 'package:envoy_mail_core/src/private/imap/imap_response.dart';
+import 'package:envoy_mail_core/src/private/imap/imap_response_line.dart';
+import 'package:envoy_mail_core/src/private/imap/list_parser.dart';
+import 'package:envoy_mail_core/src/private/util/client_base.dart';
 import 'package:test/test.dart';
 
 // cSpell:disable

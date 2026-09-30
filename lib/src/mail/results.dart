@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:collection/collection.dart' show IterableExtension;
 
-import '../../enough_mail.dart';
+import '../../envoy_mail_core.dart';
 
 /// Base class for operation results based on messages
 class MessagesOperationResult {
