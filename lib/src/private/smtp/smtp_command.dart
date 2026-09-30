@@ -2,6 +2,20 @@ import 'dart:async';
 
 import '../../smtp/smtp_response.dart';
 
+/// The `Bcc` header line and every folded continuation line under it.
+///
+/// `Header.render` folds a value longer than
+/// `MailConventions.textLineMaxLength` onto `\r\n\t`-prefixed lines, which
+/// three or four addresses already do. Matching only the first physical line
+/// left the rest of the list in the DATA that every To/Cc recipient received.
+///
+/// Stripped from the rendered message before it is sent, since `Bcc`
+/// recipients must not be visible to the other recipients.
+final bccHeaderPattern = RegExp(
+  r'^Bcc:.*\r\n(?:[ \t].*\r\n)*',
+  multiLine: true,
+);
+
 /// Contains a SMTP command
 class SmtpCommand {
   /// Creates a new command

@@ -73,14 +73,6 @@ class _SmtpSendCommand extends SmtpCommand {
   }
 }
 
-/// The `Bcc` header line and every folded continuation line under it.
-///
-/// `Header.render` folds a value longer than
-/// `MailConventions.textLineMaxLength` onto `\r\n\t`-prefixed lines, which
-/// three or four addresses already do. Matching only the first physical line
-/// left the rest of the list in the DATA that every To/Cc recipient received.
-final _bccHeader = RegExp(r'^Bcc:.*\r\n(?:[ \t].*\r\n)*', multiLine: true);
-
 /// Sends a MIME message
 class SmtpSendMailCommand extends _SmtpSendCommand {
   /// Creates a new DATA command
@@ -90,7 +82,7 @@ class SmtpSendMailCommand extends _SmtpSendCommand {
     List<String> recipientEmails, {
     required bool use8BitEncoding,
   }) : super(
-         () => message.renderMessage().replaceAll(_bccHeader, ''),
+         () => message.renderMessage().replaceAll(bccHeaderPattern, ''),
          from?.email ?? message.fromEmail,
          recipientEmails,
          use8BitEncoding: use8BitEncoding,
@@ -109,7 +101,7 @@ class SmtpSendMailDataCommand extends _SmtpSendCommand {
     List<String> recipientEmails, {
     required bool use8BitEncoding,
   }) : super(
-         () => data.toString().replaceAll(_bccHeader, ''),
+         () => data.toString().replaceAll(bccHeaderPattern, ''),
          from.email,
          recipientEmails,
          use8BitEncoding: use8BitEncoding,
